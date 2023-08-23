@@ -38,7 +38,7 @@ class TaskControllerTest extends TestCase
 
     public function testListTasks()
     {
-        Task::factory(3)->create(); // Create three tasks for testing
+        Task::factory(3)->create(); 
 
         $response = $this->json('GET', '/api/tasks');
 
@@ -48,7 +48,7 @@ class TaskControllerTest extends TestCase
 
     public function testShowTask()
     {
-        $task = Task::factory()->create(); // Create a task for testing
+        $task = Task::factory()->create(); 
 
         $response = $this->json('GET', "/api/tasks/{$task->id}");
 
@@ -58,14 +58,14 @@ class TaskControllerTest extends TestCase
 
     public function testUpdateTask()
     {
-        $task = Task::factory()->create(); // Create a task for testing
+        $task = Task::factory()->create(); 
 
         $data = [
             'title' => 'Updated Task Title',
             'description' => 'Updated task description.',
-            'attachment' => 'updated.jpg', // Example updated attachment file
+            'attachment' => 'updated.jpg', 
+            'user' => 'TestUser',
             'completed' => true,
-            // Add other attributes as needed
         ];
 
         $response = $this->json('PUT', "/api/tasks/{$task->id}", $data);
@@ -77,7 +77,7 @@ class TaskControllerTest extends TestCase
 
     public function testDeleteTask()
     {
-        $task = Task::factory()->create(); // Create a task for testing
+        $task = Task::factory()->create();
 
         $response = $this->json('DELETE', "/api/tasks/{$task->id}");
 

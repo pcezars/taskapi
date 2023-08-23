@@ -5,7 +5,7 @@
 
 # Task Management API
 
-The Task Management API is a RESTful web service built with Laravel for managing tasks. This API was build for the Back-End developer test for Buzzel.
+The Task Management API is a RESTful web service built with Laravel for managing tasks. This API was build for the Back-End developer test for Buzzvel.
 
 ## Table of Contents
 
