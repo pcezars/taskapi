@@ -78,5 +78,3 @@ php artisan test
  ```
 
 This will execute the test cases defined in the project and provide you with test results.
-
-## For online testing, use the following website: taskapi.wuaze.com
