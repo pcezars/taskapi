@@ -59,7 +59,7 @@ You can use the API endpoints to manage tasks in your application. Here's an ove
 * Create a Task:
   * Endpoint: POST /api/tasks
   * Request Body: JSON data containing task details.
-  * The field "title" and "user" are required to create a task.
+  * The field "title" is required to create a task.
   * Authorization token must be set.
   * Example:
   * ```json
@@ -67,11 +67,8 @@ You can use the API endpoints to manage tasks in your application. Here's an ove
     "title": "Sample Task", (Required)
     "description": "This is a sample task.",
     "attachment": "sample.jpg",
-    "user": "Paulo", (Required)
     }
-
-
-
+    ```
 
 * List all tasks
   * Endpoint: GET /api/tasks
