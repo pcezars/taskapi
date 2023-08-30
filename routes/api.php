@@ -22,10 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('tasks')->group(function () {
     Route::get('/', [TaskController::class, 'index']);
-    Route::post('/', [TaskController::class, 'store']);
+    Route::post('/', [TaskController::class, 'store'])->middleware('auth:sanctum');
     Route::get('/{id}', [TaskController::class, 'show']);
-    Route::put('/{id}', [TaskController::class, 'update']);
-    Route::delete('/{id}', [TaskController::class, 'destroy']);
+    Route::put('/{id}', [TaskController::class, 'update'])->middleware('auth:sanctum');
+    Route::delete('/{id}', [TaskController::class, 'destroy'])->middleware('auth:sanctum');
 });
 
 Route::controller(AuthController::class)->group(function () {
@@ -33,3 +33,5 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('register', 'register');
     Route::post('logout', 'logout');
 });
+
+Route::post('/me', [AuthController::class, 'me'])->middleware('auth:sanctum');

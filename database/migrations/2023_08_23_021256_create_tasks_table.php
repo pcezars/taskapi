@@ -20,7 +20,8 @@ return new class extends Migration
             $table->timestamps();
             $table->timestamp('completed_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
-            $table->string('user');
+            $table->string('created_by');
+            $table->string('edited_by')->nullable();
         });
     }
 

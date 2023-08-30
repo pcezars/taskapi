@@ -77,4 +77,14 @@ class AuthController extends Controller
             ]
         ]);
     }
+
+    public function me(Request $request)
+{
+
+    if(!$request->user()){
+
+        return response()->json(['message' => 'User not logged in', 'data' => 'Please, login with an existing user']);
+    };
+    return $request->user();
+}
 }

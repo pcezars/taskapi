@@ -7,6 +7,9 @@ use App\Http\Requests\StoreTaskRequest;
 use App\Http\Resources\TaskResource;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use app\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class TaskController extends Controller
 {
@@ -32,13 +35,18 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
+
+        $user = $request->user()->name;
         
         $data = $request->validate([
             'title' => 'required|string',
             'description' => 'nullable|string',
             'attachment' => 'nullable|string',
-            'user' => 'required|string'
+            'created_by' => 'string',
+            'completed' => 'boolean'
         ]);
+
+        $data['created_by'] = $user;
     
         $task = Task::create($data);
     
@@ -72,14 +80,19 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $user = $request->user()->name;
+        
         $data = $request->validate([
             'title' => 'string',
             'description' => 'nullable|string',
             'attachment' => 'nullable|string',
             'completed' => 'boolean',
-            'user' => 'required|string',
+            'edited_by' => 'nullable|string'
             
         ]);
+
+        $data['edited_by'] = $user;
     
         $task = Task::find($id);
     
