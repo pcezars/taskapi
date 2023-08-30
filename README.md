@@ -37,11 +37,30 @@ Before you begin, ensure you have met the following requirements:
 
 You can use the API endpoints to manage tasks in your application. Here's an overview of the available endpoints:
 
-### API Endpoints
+## API Endpoints
+
+### User Endpoints
+* Create a user:
+  * Endpoint: POST /api/register
+  * Request Body: JSON data containing username, email and password(must contain at least 6 char.).
+
+* Login with an user:
+  * Endpoint: POST /api/login
+  * Request Body: JSON data containing email and password(save your token and use it as a bearer authorization token).
+ 
+* Logout:
+  * Endpoint: POST /api/logout
+
+* Check if there's an logged user:
+  * Endpoint: POST /api/me
+  * Authorization token must be set, otherwise it wont show anything.
+    
+### Tasks Endpoints
 * Create a Task:
   * Endpoint: POST /api/tasks
   * Request Body: JSON data containing task details.
-  * The field "title" and "tser" are required to create a task.
+  * The field "title" and "user" are required to create a task.
+  * Authorization token must be set.
   * Example:
   * ```json
     {
@@ -64,9 +83,11 @@ You can use the API endpoints to manage tasks in your application. Here's an ove
   * Endpoint: PUT /api/tasks/{id}
   * Request Body: JSON data containing updated task details.
   * The field "user" is required to update a task.
+  * Authorization token must be set.
 
 * Delete Task:
   * Endpoint: DELETE /api/tasks/{id}
+  * Authorization token must be set.
  
 Make requests to these endpoints using your preferred HTTP client (e.g., Postman) to interact with the API.
 
